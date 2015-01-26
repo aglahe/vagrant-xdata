@@ -23,4 +23,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "./hive", "/etc/hive/conf"
   config.vm.synced_folder "./spark", "/etc/spark/conf"
   config.vm.synced_folder "./hbase", "/etc/hbase/conf"
+
+
 end
