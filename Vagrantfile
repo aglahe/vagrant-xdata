@@ -13,6 +13,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.cpus = 2
   end
 
+  # Original starting point of the base box, and deploy script
+  #config.vm.box = "chef/centos-6.6"
+  #config.vm.provision :shell, :path => "deploy.sh"
+
   config.vm.box ="aarong-vagrant/memex-client"
 
   # Since we use a Self signed cert..need to set to false
