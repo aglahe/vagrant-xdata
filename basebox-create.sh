@@ -43,6 +43,10 @@ sudo yum -y install zookeeper
 # Sqoop
 sudo yum -y install sqoop
 
+# Add the Hadoop Lzo
+sudo wget -P /etc/yum.repos.d http://archive-primary.cloudera.com/gplextras5/redhat/6/x86_64/gplextras/cloudera-gplextras5.repo
+sudo yum -y install hadoop-lzo
+
 # Setup software DIR
 sudo mkdir -p /srv/software
 
@@ -51,6 +55,15 @@ sudo yum -y install solr
 sudo yum -y install solr-mapreduce
 sudo yum -y install solr-crunch
 sudo ln -s /etc/default/solr /etc/solr/default
+
+# Kafka
+sudo wget https://github.com/apache/kafka/archive/0.8.2.1.tar.gz
+sudo /bin/tar xzvf 0.8.2.1.tar.gz -C /srv/software
+sudo ln -s /srv/software/kafka-0.8.2.1 /srv/software/kafka
+sudo mkdir -p /var/log/kafka
+sudo rm -rf /srv/software/kafka/config
+sudo ln -s /etc/kafka/conf /srv/software/kafka/config
+sudo echo "export PATH=\$PATH:/srv/software/kafka/bin" >> /etc/profile.d/kafka.sh
 
 # Storm
 sudo wget https://github.com/apache/storm/archive/v0.9.3.tar.gz
@@ -66,17 +79,13 @@ sudo mkdir -p /tmp/storm/local
 sudo wget http://www.scala-lang.org/files/archive/scala-2.11.5.tgz
 sudo /bin/tar xzvf scala-2.11.5.tgz -C /usr/lib
 sudo ln -s /usr/lib/scala-2.11.5 /usr/lib/scala
-sudo echo "export PATH=\$PATH:/usr/lib/scala/bin\nexport SCALA_HOME=/usr/lib/scala" >> /etc/profile.d/scala.sh
+sudo echo "export PATH=\$PATH:/usr/lib/scala/bin\\nexport SCALA_HOME=/usr/lib/scala" >> /etc/profile.d/scala.sh
 
 # Get MiniConda
-sudo wget http://repo.continuum.io/miniconda/Miniconda-3.7.0-Linux-x86_64.sh
-sudo /bin/chmod 755 ./Miniconda-3.7.0-Linux-x86_64.sh
-sudo ./Miniconda-3.7.0-Linux-x86_64.sh -b -p /srv/software/anaconda
+sudo wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+sudo /bin/chmod 755 ./Miniconda-latest-Linux-x86_64.sh
+sudo ./Miniconda-latest-Linux-x86_64.sh -b -p /srv/software/anaconda
 sudo echo "export PATH=/srv/software/anaconda/bin:\$PATH" >> /etc/profile.d/anaconda.sh
 sudo /srv/software/anaconda/bin/conda update --yes conda
 sudo /srv/software/anaconda/bin/conda install --yes ipython
 sudo /srv/software/anaconda/bin/conda install --yes ipython-notebook
-
-# Add the Hadoop Lzo
-sudo wget -P /etc/yum.repos.d http://archive-primary.cloudera.com/gplextras5/redhat/6/x86_64/gplextras/cloudera-gplextras5.repo
-sudo yum -y install hadoop-lzo
