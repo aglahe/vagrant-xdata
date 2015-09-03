@@ -11,6 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |v|
     v.memory = 4096
     v.cpus = 2
+    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
   # Original starting point of the base box, and deploy script
