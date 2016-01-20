@@ -34,6 +34,7 @@ export PYSPARK_DRIVER_PYTHON=ipython
 # Options read in YARN client mode
 # - HADOOP_CONF_DIR, to point Spark towards Hadoop configuration files
 export HADOOP_CONF_DIR=${HADOOP_CONF_DIR:-/etc/hadoop/conf}
+SPARK_DIST_CLASSPATH="$SPARK_DIST_CLASSPATH:/usr/lib/hadoop/lib/*"
 
 # Options read when launching programs locally with
 # ./bin/run-example or ./bin/spark-submit
