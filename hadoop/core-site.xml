@@ -24,7 +24,7 @@
         </property>
         <property>
              <name>ha.zookeeper.quorum</name>
-             <value>xd-zk01.xdata.data-tactics-corp.com:2181,xd-zk02.xdata.data-tactics-corp.com:2181,xd-zk03.xdata.data-tactics-corp.com:2181</value>
+             <value>zk01.xdata.data-tactics-corp.com:2181,zk02.xdata.data-tactics-corp.com:2181,zk03.xdata.data-tactics-corp.com:2181,zk04.xdata.data-tactics-corp.com:2181,zk05.xdata.data-tactics-corp.com:2181</value>
         </property>
 
         <!-- History Server proxy -->
@@ -38,13 +38,13 @@
         </property>
         <!-- History Server proxy -->
 
-        <property>  
-           <name>hadoop.proxyuser.httpfs.hosts</name>  
-	   <value>*</value>  
-	</property>  
-	<property>  
-	   <name>hadoop.proxyuser.httpfs.groups</name>  
-	   <value>*</value>  
+        <property>
+           <name>hadoop.proxyuser.httpfs.hosts</name>
+	   <value>*</value>
+	</property>
+	<property>
+	   <name>hadoop.proxyuser.httpfs.groups</name>
+	   <value>*</value>
 	</property>
 
         <!-- Hue WebHDFS proxy user setting -->
